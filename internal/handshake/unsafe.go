@@ -6,20 +6,18 @@ package handshake
 // We check in init() that this conversion actually is safe.
 
 import (
-	"crypto/tls"
 	"reflect"
-
-	"github.com/marten-seemann/qtls"
 )
 
-func init() {
-	if !structsEqual(&tls.ConnectionState{}, &qtls.ConnectionState{}) {
-		panic("qtls.ConnectionState not compatible with tls.ConnectionState")
-	}
-	if !structsEqual(&tls.ClientSessionState{}, &qtls.ClientSessionState{}) {
-		panic("qtls.ClientSessionState not compatible with tls.ClientSessionState")
-	}
-}
+//remove qtls && tls struct compare
+// func init() {
+// 	if !structsEqual(&tls.ConnectionState{}, &qtls.ConnectionState{}) {
+// 		panic("qtls.ConnectionState not compatible with tls.ConnectionState")
+// 	}
+// 	if !structsEqual(&tls.ClientSessionState{}, &qtls.ClientSessionState{}) {
+// 		panic("qtls.ClientSessionState not compatible with tls.ClientSessionState")
+// 	}
+// }
 
 func structsEqual(a, b interface{}) bool {
 	sa := reflect.ValueOf(a).Elem()
